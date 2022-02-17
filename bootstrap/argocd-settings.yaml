@@ -30,6 +30,7 @@ spec:
       ignoreDifferences: |
         jqPathExpressions:
         - .spec.tags[]?.generation
+        - .spec.tags[]?.annotations
   resourceExclusions: |
     - apiGroups:
       - tekton.dev
