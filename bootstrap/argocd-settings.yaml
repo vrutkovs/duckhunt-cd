@@ -12,10 +12,7 @@ spec:
   dex:
     openShiftOAuth: true
   rbac:
-    defaultPolicy: 'role:readonly'
-    policy: |
-      g, cluster-admins, role:admin
-    scopes: '[groups]'
+    defaultPolicy: 'role:admin'
   resourceCustomizations: |
     route.openshift.io/Route:
       ignoreDifferences: |
