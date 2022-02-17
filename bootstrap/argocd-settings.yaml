@@ -8,7 +8,15 @@ metadata:
 spec:
   server:
     route:
+      annotations: {}
       enabled: true
+      path: /
+      TLS:
+        insecureEdgeTerminationPolicy: Redirect
+        termination: passthrough
+      wildcardPolicy: None
+    insecure: false
+    resources: {}
   dex:
     openShiftOAuth: true
   rbac:
