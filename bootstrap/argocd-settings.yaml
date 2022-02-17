@@ -39,3 +39,24 @@ spec:
       kinds:
       - PipelineRun
       - TaskRun
+  resource.customizations.health.build.dev_BuildRun: |
+    hs = {}
+    if obj.status ~= nil then
+      if obj.status.succeeded == "Unknown" then
+        hs.status = "Progressing"
+        hs.message = "Waiting for build to complete"
+        return hs
+      end
+      for i, condition in ipairs(obj.status.conditions) do
+        if condition.type == "Succeeded" and condition.status == "False" then
+          hs.status = "Degraded"
+          hs.message = condition.message
+          return hs
+        end
+        if condition.type == "Succeeded" and condition.status == "True" then
+          hs.status = "Healthy"
+          hs.message = condition.message
+          return hs
+        end
+      end
+    end
