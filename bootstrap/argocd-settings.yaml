@@ -26,6 +26,10 @@ spec:
       ignoreDifferences: |
         jsonPointers:
         - /spec/host
+    image.openshift.io/ImageStream:
+      ignoreDifferences: |
+        jqPathExpressions:
+        - .spec.tags[]?.generation
   resourceExclusions: |
     - apiGroups:
       - tekton.dev
