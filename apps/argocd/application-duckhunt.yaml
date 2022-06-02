@@ -11,7 +11,7 @@ spec:
   source:
     path: manifests
     repoURL: 'https://github.com/vrutkovs/k8s-podhunt'
-    targetRevision: shipwright
+    targetRevision: master
   syncPolicy:
     automated: {}
     syncOptions:
